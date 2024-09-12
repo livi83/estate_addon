@@ -7,6 +7,26 @@
         <field name="arch" type="xml">
             <form string="Property Form">
                 <sheet>
+                    <header>
+                        <!-- 
+                        <button name="action_cancel" string="Cancel" type="object" class="btn btn-secondary"
+                    t-if="record.state == 'new' or record.state == 'offer_received' or record.state == 'offer_accepted'" />
+                    
+                    <button name="action_sold" string="Sold" type="object" class="btn btn-primary"
+                    t-if="record.state == 'offer_accepted'" />
+
+                    <button name="action_cancel" string="Cancel" type="object" class="btn btn-secondary"
+                        attrs="{'invisible': ['|', '|', ('state', '=', 'sold'), ('state', '=', 'canceled'), ('state', '=', 'offer_refused')]}"/>
+
+                     <button name="action_sold" string="Sold" type="object" class="btn btn-primary"
+                        attrs="{'invisible': [('state', '!=', 'offer_accepted')]}"/>
+                        !-->
+
+                        <button name="action_cancel" string="Cancel" type="object" class="btn btn-primary"/>
+                        <button name="action_sold" string="Sold" type="object" class="btn btn-secondary"/>
+
+                    </header>
+
                     <!-- Title and Tags -->
                     <group>
                         <field name="name" widget="char"/>

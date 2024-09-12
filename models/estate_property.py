@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -70,3 +70,17 @@ class EstateProperty(models.Model):
                 record.best_price = max(record.offer_ids.mapped('price'))
             else:
                 record.best_price = 0.0
+
+    def action_cancel(self):
+        """Cancel the property."""
+        if self.state == 'sold':
+            raise UserError("Sold properties cannot be canceled.")
+        self.state = 'canceled'
+
+    def action_sold(self):
+        """Mark the property as sold."""
+        if self.state == 'canceled':
+            raise UserError("Canceled properties cannot be sold.")
+        if not self.offer_ids.filtered(lambda offer: offer.state == 'accepted'):
+            raise UserError("You need to accept an offer before selling the property.")
+        self.state = 'sold'
