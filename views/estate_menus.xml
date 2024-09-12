@@ -2,22 +2,39 @@
 <odoo>
     <!-- Top-Level Menu -->
     <menuitem id="menu_real_estate"
-        name="Real Estate"
-        sequence="1"
-        />
+              name="Real Estate"
+              sequence="1"/>
 
-    <!-- Second-Level Menu under Real Estate -->
+    <!-- Second-Level Menu under Real Estate for Advertisements -->
     <menuitem id="menu_real_estate_advertisements"
-        name="Advertisements"
-        parent="menu_real_estate"
-        sequence="10"
-        />
+              name="Advertisements"
+              parent="menu_real_estate"
+              sequence="10"/>
 
-    <!-- Third-Level Menu under Advertisements -->
+    <!-- Second-Level Menu under Real Estate for Settings -->
+    <menuitem id="menu_real_estate_settings"
+              name="Settings"
+              parent="menu_real_estate"
+              sequence="20"/>
+
+    <!-- Third-Level Menu under Advertisements for Properties -->
     <menuitem id="menu_real_estate_properties"
-        name="Properties"
-        parent="menu_real_estate_advertisements"
-        sequence="10"
-        action="action_estate_property"
-        />
+              name="Properties"
+              parent="menu_real_estate_advertisements"
+              sequence="10"
+              action="action_estate_property"/>
+
+    <!-- Third-Level Menu under Settings for Property Types -->
+    <menuitem id="menu_real_estate_property_types"
+              name="Property Types"
+              parent="menu_real_estate_settings"
+              sequence="10"
+              action="action_estate_property_type"/>
+
+    <!-- Third-Level Menu under Settings for Property Tags -->
+    <menuitem id="menu_real_estate_property_tags"
+              name="Property Tags"
+              parent="menu_real_estate_settings"
+              sequence="20"
+              action="action_estate_property_tag"/>
 </odoo>

@@ -7,33 +7,41 @@
         <field name="arch" type="xml">
             <form string="Property Form">
                 <sheet>
-                    <!-- Existing Groups -->
+                    <!-- Title and Tags -->
                     <group>
-                        <field name="name"/>
-                        <field name="description"/>
-                        <field name="property_type_id"/>
+                        <field name="name" widget="char"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
                     </group>
+
+                    <!-- Two-column layout -->
                     <group>
                         <group>
+                            <field name="property_type_id"/>
                             <field name="postcode"/>
-                            <field name="expected_price"/>
-                            <field name="bedrooms"/>
-                            <field name="facades"/>
-                            <field name="garden"/>
-                            <field name="garden_orientation"/>
+                            <field name="date_availability" string="Available From"/>
                         </group>
                         <group>
-                            <field name="date_availability"/>
+                            <field name="expected_price"/>
                             <field name="selling_price"/>
-                            <field name="living_area"/>
-                            <field name="garage"/>
-                            <field name="garden_area"/>
                         </group>
                     </group>
-                    <!-- New Tab for Buyer and Salesperson -->
+
+                    <!-- Tabs for Description and Other Info -->
                     <notebook>
-                        <page string="Additional Info">
+                        <page string="Description">
                             <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <field name="bedrooms"/>
+                                <field name="facades"/>
+                                <field name="garden"/>
+                                <field name="garden_orientation"/>
+                                <field name="living_area"/>
+                                <field name="garage"/>
+                                <field name="garden_area"/>
                                 <field name="buyer_id"/>
                                 <field name="salesperson_id"/>
                             </group>
@@ -51,18 +59,10 @@
         <field name="arch" type="xml">
             <tree string="Property List">
                 <field name="name" string="Title"/>
-                <field name="description"/>
+                <field name="tag_ids" widget="many2many_tags"/>
                 <field name="postcode"/>
                 <field name="expected_price"/>
-                <field name="bedrooms"/>
-                <field name="facades"/>
-                <field name="garden"/>
-                <field name="garden_orientation"/>
-                <field name="garden_area"/>
-                <field name="date_availability"/>
                 <field name="selling_price"/>
-                <field name="living_area"/>
-                <field name="garage"/>
                 <field name="property_type_id" string="Property Type"/>
             </tree>
         </field>
