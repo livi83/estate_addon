@@ -11,8 +11,8 @@ class EstateProperty(models.Model):
     date_availability = fields.Date(string="Available From")
     
     # Required field
-    expected_price = fields.Float(string="Expected Price", required=True)
-    
+    expected_price = fields.Float(string='Expected Price', required=True, default=0.0)
+
     selling_price = fields.Float(string="Selling Price", readonly=True)
     bedrooms = fields.Integer(string="Bedrooms")
     living_area = fields.Integer(string="Living Area (sqm)")

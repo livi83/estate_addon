@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View for Estate Property -->
+    <record id="view_estate_property_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Property Form">
+                <sheet>
+                    <!-- First Group: Single Column Layout -->
+                    <div class="row">
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </div>
+                    <!-- Two Column Layout: Second and Third Groups -->
+                    <div class="row">
+                        <!-- Second Group: Left Column -->
+                        <div class="col-6">
+                            <group>
+                                <field name="postcode"/>
+                                <field name="expected_price"/>
+                                <field name="bedrooms"/>
+                                <field name="facades"/>
+                                <field name="garden"/>
+                                <field name="garden_orientation"/>
+                            </group>
+                        </div>
+                        <!-- Third Group: Right Column -->
+                        <div class="col-6">
+                            <group>
+                                <field name="date_availability"/>
+                                <field name="selling_price"/>
+                                <field name="living_area"/>
+                                <field name="garage"/>
+                                <field name="garden_area"/>
+                            </group>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Estate Property -->
+    <record id="view_estate_property_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Property List">
+                <field name="name" string="Title"></field>
+                <field name="description"></field>
+                <field name="postcode"></field>
+                <field name="expected_price"></field>
+                <field name="bedrooms"></field>
+                <field name="facades"></field>
+                <field name="garden"></field>
+                <field name="garden_orientation"></field>
+                <field name="garden_area"></field>
+                <!--<field name="active"></field>-->
+                <field name="date_availability"></field>
+                <field name="selling_price"></field>
+                <field name="living_area"></field>
+                <field name="garage"></field>
+                <!--<field name="status"></field>>-->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Estate Property -->
+    <record id="action_estate_property" model="ir.actions.act_window">
+        <field name="name">Estate Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new property listing.
+            </p>
+        </field>
+    </record>
+</odoo>

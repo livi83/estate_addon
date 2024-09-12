@@ -12,6 +12,14 @@
         'views/estate_property_views.xml',
         'views/estate_menus.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'estate/static/src/css/style.css',
+        ],
+        #'web.assets_frontend': [
+         #   'static/src/css/style.css',
+        #],
+    },
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
