@@ -58,6 +58,14 @@ class EstateProperty(models.Model):
 
     best_price = fields.Float(string='Best Offer', compute='_compute_best_price', store=True)
 
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('available', 'Available'),
+        ('offer_accepted', 'Offer Accepted'),
+        ('sold', 'Sold'),
+        ('canceled', 'Canceled')
+    ], string='Status', default='draft')
+    
     @api.depends('living_area', 'garden_area')
     def _compute_total_area(self):
         for record in self:
