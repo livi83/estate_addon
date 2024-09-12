@@ -7,6 +7,7 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
     ],
     'installable': True,
     'application': True,
