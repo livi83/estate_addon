@@ -1,6 +1,7 @@
 {
     'name': 'Estate',
     'version': '1.0',
+    'category':'Real Estate/Brokerage',
     'summary': 'An estate modul',
     'description': 'Description',
     'author': 'Lívia Kelebercová',
