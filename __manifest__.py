@@ -10,7 +10,9 @@
         'security/ir.model.access.csv',
         'security/security.xml',
         'views/estate_property_views.xml',
+        'views/estate_property_type_views.xml',
         'views/estate_menus.xml',
+        
     ],
     'assets': {
         'web.assets_backend': [
