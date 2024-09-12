@@ -32,8 +32,8 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Menu -->
+    <!-- Menu 
     <menuitem id="estate_property_type_menu_root" name="Estate Property Types"
-              sequence="10" action="action_estate_property_type"/>
+              sequence="10" action="action_estate_property_type"/>-->
 
 </odoo>

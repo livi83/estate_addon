@@ -48,3 +48,5 @@ class EstateProperty(models.Model):
                                'tag_id', 
                                string='Tags'
                                )
+    #Offers 
+    offer_ids = fields.One2many('estate.property.offer', 'property_id', string='Offers')
