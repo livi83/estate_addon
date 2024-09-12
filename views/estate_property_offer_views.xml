@@ -19,6 +19,20 @@
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
             <form string="Property Offer">
+                <header>
+                    <!-- 
+
+                    <button name="action_accept" string="Accept" type="object" class="btn btn-primary" t-if="state === 'new'"/>
+                    <button name="action_refuse" string="Refuse" type="object" class="btn btn-secondary" t-if="state === 'new'"/>
+                    
+                    <button name="action_accept" string="Accept" type="object" class="btn btn-primary" t-if="state == 'new'"/>
+                    <button name="action_refuse" string="Refuse" type="object" class="btn btn-secondary" t-if="state == 'new'"/>
+                    !-->
+
+                    <button name="action_accept" string="Accept" type="object" class="btn btn-primary"/>
+                    <button name="action_refuse" string="Refuse" type="object" class="btn btn-secondary" />
+
+                </header>
                 <sheet>
                     <group>
                         <field name="price"/>
