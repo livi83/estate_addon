@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class EstateProperty(models.Model):
@@ -48,5 +48,13 @@ class EstateProperty(models.Model):
                                'tag_id', 
                                string='Tags'
                                )
-    #Offers 
+    # Offers 
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string='Offers')
+
+    # Total area
+    total_area = fields.Float(string='Total Area', compute='_compute_total_area', store=True)
+
+    @api.depends('living_area', 'garden_area')
+    def _compute_total_area(self):
+        for record in self:
+            record.total_area = record.living_area + record.garden_area

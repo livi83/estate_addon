@@ -45,6 +45,7 @@
                                 <field name="living_area"/>
                                 <field name="garage"/>
                                 <field name="garden_area"/>
+                                <field name="total_area" readonly="1"/>
                                 <field name="buyer_id"/>
                                 <field name="salesperson_id"/>
                             </group>
