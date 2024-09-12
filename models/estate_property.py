@@ -1,5 +1,6 @@
 from odoo import models, fields
 
+
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate Property"
@@ -30,3 +31,7 @@ class EstateProperty(models.Model):
     create_date = fields.Datetime(string="Created on", readonly=True)
     write_uid = fields.Many2one('res.users', string="Last Updated by", readonly=True)
     write_date = fields.Datetime(string="Last Updated on", readonly=True)
+
+    # Relation to property type
+    property_type_id = fields.Many2one('estate.property.type', string='Property Type')
+  
