@@ -3,7 +3,8 @@ from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate Property"
-
+    _order = "id desc"  # Order by ID in descending order
+    
     # Set the 'name' and 'expected_price' fields as required (not nullable in the database)
     name = fields.Char(string="Title", required=True)
     description = fields.Text(string="Description")

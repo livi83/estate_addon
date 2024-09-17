@@ -4,7 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 class EstatePropertyTag(models.Model):
     _name = "estate.property.tag"
     _description = "Real Estate Property Tag"
-
+    _order = "name"  # Order by name in ascending order
     name = fields.Char(string="Tag Name", required=True)
 
     @api.constrains('name')
