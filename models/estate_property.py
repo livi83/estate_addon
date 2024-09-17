@@ -1,6 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import UserError
-
+from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate Property"
@@ -80,6 +79,24 @@ class EstateProperty(models.Model):
             else:
                 record.best_price = 0.0
 
+    @api.constrains('expected_price', 'selling_price', 'bedrooms', 'living_area', 'facades', 'garden_area', 'best_price')
+    def _check_positive_values(self):
+        for record in self:
+            if record.expected_price <= 0:
+                raise ValidationError("Expected Price must be strictly positive.")
+            if record.selling_price and record.selling_price <= 0:
+                raise ValidationError("Selling Price must be strictly positive.")
+            if record.bedrooms and record.bedrooms <= 0:
+                raise ValidationError("Bedrooms must be strictly positive.")
+            if record.living_area and record.living_area <= 0:
+                raise ValidationError("Living Area must be strictly positive.")
+            if record.facades and record.facades <= 0:
+                raise ValidationError("Facades must be strictly positive.")
+            if record.garden_area and record.garden_area <= 0:
+                raise ValidationError("Garden Area must be strictly positive.")
+            if record.best_price and record.best_price <= 0:
+                raise ValidationError("Best Offer must be strictly positive.")
+            
     def action_cancel(self):
         """Cancel the property."""
         if self.status == 'sold':
