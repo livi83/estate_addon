@@ -34,6 +34,7 @@
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <tree string="Property Types">
+                <field name="sequence" widget="handle" />
                 <field name="name"/>
             </tree>
         </field>
@@ -45,9 +46,5 @@
         <field name="res_model">estate.property.type</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-    <!-- Menu 
-    <menuitem id="estate_property_type_menu_root" name="Estate Property Types"
-              sequence="10" action="action_estate_property_type"/>-->
 
 </odoo>
