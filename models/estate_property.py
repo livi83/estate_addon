@@ -58,9 +58,9 @@ class EstateProperty(models.Model):
     best_price = fields.Float(string='Best Offer', compute='_compute_best_price', store=True)
 
     status = fields.Selection([
-        ('draft', 'Draft'),
         ('new', 'New'),
         ('available', 'Available'),
+        ('offer_received', 'Offer Received'),
         ('offer_accepted', 'Offer Accepted'),
         ('sold', 'Sold'),
         ('canceled', 'Canceled')

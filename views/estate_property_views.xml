@@ -23,9 +23,14 @@
                                 icon="fa-times"/>
                     </header>
 
-                    <!-- Title and Tags -->
+                    <!-- Status Bar -->
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,new,available,offer_accepted,sold,canceled"/>
+                    </header>
+
+                    <!-- Status, Title and Tags -->
                     <group>
-                        <field name="status" widget="char"/>
+                        <field name="status"/>
                         <field name="name" widget="char"/>
                         <field name="tag_ids" widget="many2many_tags"/>
                     </group>
