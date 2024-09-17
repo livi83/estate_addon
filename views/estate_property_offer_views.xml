@@ -8,7 +8,6 @@
             <tree string="Property Offers">
                 <field name="price"/>
                 <field name="partner_id"/>
-                <field name="status"/>
                 <!-- Accept Offer Button -->
                  <button type="action" 
                             name="%(estate.action_estate_property_offer_accept)d" 
@@ -23,6 +22,7 @@
                             class="btn-secondary"
                             icon="fa-times"
                             />
+                    <field name="status"/>
             </tree>
         </field>
     </record>
