@@ -6,7 +6,8 @@ class EstatePropertyType(models.Model):
     _description = 'Real Estate Property Type'
 
     name = fields.Char(required=True, string='Name')
-
+    property_ids = fields.One2many('estate.property', 'property_type_id', string="Properties")
+    
     @api.constrains('name')
     def _check_unique_name(self):
         for record in self:
