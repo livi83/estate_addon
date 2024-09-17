@@ -58,7 +58,7 @@ class EstateProperty(models.Model):
 
     best_price = fields.Float(string='Best Offer', compute='_compute_best_price', store=True)
 
-    state = fields.Selection([
+    status = fields.Selection([
         ('draft', 'Draft'),
         ('available', 'Available'),
         ('offer_accepted', 'Offer Accepted'),
@@ -81,14 +81,14 @@ class EstateProperty(models.Model):
 
     def action_cancel(self):
         """Cancel the property."""
-        if self.state == 'sold':
+        if self.status == 'sold':
             raise UserError("Sold properties cannot be canceled.")
-        self.state = 'canceled'
+        self.status = 'canceled'
 
     def action_sold(self):
         """Mark the property as sold."""
-        if self.state == 'canceled':
+        if self.status == 'canceled':
             raise UserError("Canceled properties cannot be sold.")
-        if not self.offer_ids.filtered(lambda offer: offer.state == 'accepted'):
+        if not self.offer_ids.filtered(lambda offer: offer.status == 'accepted'):
             raise UserError("You need to accept an offer before selling the property.")
-        self.state = 'sold'
+        self.status = 'sold'

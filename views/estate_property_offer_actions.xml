@@ -1,0 +1,21 @@
+<odoo>
+    <!-- Action to Accept Property Offer -->
+    <record id="action_estate_property_offer_accept" model="ir.actions.server">
+        <field name="name">Accept Property Offer</field>
+        <field name="model_id" ref="model_estate_property_offer"/>
+        <field name="state">code</field>
+        <field name="code">
+            record.action_accept()
+        </field>
+    </record>
+
+    <!-- Action to Refuse Property Offer -->
+    <record id="action_estate_property_offer_refuse" model="ir.actions.server">
+        <field name="name">Refuse Property Offer</field>
+        <field name="model_id" ref="model_estate_property_offer"/>
+        <field name="state">code</field>
+        <field name="code">
+            record.action_refuse()
+        </field>
+    </record>
+</odoo>

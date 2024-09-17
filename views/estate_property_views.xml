@@ -8,8 +8,7 @@
             <form string="Property Form">
                 <sheet>
                     <header>
-                        <button name="action_sold" string="Sold" type="object" class="btn btn-primary"/>
-                        <button name="action_cancel" string="Cancel" type="object" class="btn btn-secondary" />
+                        
                     </header>
 
                     <!-- Title and Tags -->
