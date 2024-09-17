@@ -1,0 +1,21 @@
+<odoo>
+    <!-- Sold Action -->
+    <record id="action_estate_property_sold" model="ir.actions.server">
+        <field name="name">Accept Property Offer</field>
+        <field name="model_id" ref="model_estate_property"/>
+        <field name="state">code</field>
+        <field name="code">
+            record.action_sold()
+        </field>
+    </record>
+
+    <!-- Cancel Action -->
+    <record id="action_estate_property_cancel" model="ir.actions.server">
+        <field name="name">Refuse Property Offer</field>
+        <field name="model_id" ref="model_estate_property"/>
+        <field name="state">code</field>
+        <field name="code">
+            record.action_cancel()
+        </field>
+    </record>
+</odoo>

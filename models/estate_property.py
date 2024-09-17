@@ -60,11 +60,12 @@ class EstateProperty(models.Model):
 
     status = fields.Selection([
         ('draft', 'Draft'),
+        ('new', 'New'),
         ('available', 'Available'),
         ('offer_accepted', 'Offer Accepted'),
         ('sold', 'Sold'),
         ('canceled', 'Canceled')
-    ], string='Status', default='draft')
+    ], string='Status', default='new')
     
     @api.depends('living_area', 'garden_area')
     def _compute_total_area(self):

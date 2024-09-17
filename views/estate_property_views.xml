@@ -8,11 +8,24 @@
             <form string="Property Form">
                 <sheet>
                     <header>
-                        
+                        <!-- Mark as Sold Button -->
+                        <button type="object" 
+                                name="action_sold" 
+                                string="Sold" 
+                                class="btn-primary"
+                                icon="fa-check"/>
+                    
+                        <!-- Cancel Property Button -->
+                        <button type="object" 
+                                name="action_cancel" 
+                                string="Cancel" 
+                                class="btn-secondary"
+                                icon="fa-times"/>
                     </header>
 
                     <!-- Title and Tags -->
                     <group>
+                        <field name="status" widget="char"/>
                         <field name="name" widget="char"/>
                         <field name="tag_ids" widget="many2many_tags"/>
                     </group>
@@ -67,6 +80,7 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <tree string="Property List">
+                <field name="status" string="Status"/>
                 <field name="name" string="Title"/>
                 <field name="tag_ids" widget="many2many_tags"/>
                 <field name="postcode"/>
