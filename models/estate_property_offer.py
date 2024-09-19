@@ -14,7 +14,8 @@ class EstatePropertyOffer(models.Model):
     ], string='Status', default='waiting')
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     property_id = fields.Many2one('estate.property', string='Property', required=True, ondelete='cascade')
-
+    property_type_id = fields.Many2one(related='property_id.property_type_id', store=True, string="Property Type")
+    
     def action_accept(self):
         """Accept the offer."""
         if self.property_id.status == 'sold':

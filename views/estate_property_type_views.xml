@@ -1,15 +1,26 @@
 <odoo>
     <!-- Form View -->
+    <odoo>
+    <!-- Form View -->
     <record id="view_estate_property_type_form" model="ir.ui.view">
         <field name="name">estate.property.type.form</field>
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <form string="Property Type">
                 <sheet>
+                    <header>
+                         <button name="%(action_estate_property_offer)d" 
+                                type="action" 
+                                context="{'search_default_property_type_id': id}"
+                                class="oe_stat_button property-type-offers-button" 
+                                icon="fa-money" 
+                                help="Total Offers for this Property Type">
+                            <field name="offer_count" widget="statinfo" string="Offers"/>
+                        </button>
+                    </header>
                     <group>
                         <field name="name"/>
                     </group>
-                    <!-- Inline List View for Properties -->
                     <group>
                         <field name="property_ids">
                             <tree>
@@ -23,10 +34,15 @@
                             </tree>
                         </field>
                     </group>
+                    
                 </sheet>
             </form>
         </field>
     </record>
+
+    <!-- Other views and actions remain unchanged -->
+</odoo>
+
 
     <!-- Tree View -->
     <record id="view_estate_property_type_tree" model="ir.ui.view">
