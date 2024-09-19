@@ -44,7 +44,7 @@
                             <!-- Add options to prevent creation and editing of property_type_id -->
                             <field name="property_type_id" options="{'no_create': True, 'no_open': True}"/>
                             <field name="postcode"/>
-                            <field name="date_availability" string="Available From"/>
+                            <field name="date_availability" string="Available From" invisible="1"/> <!-- Hidden by default -->
                         </group>
                         <group>
                             <field name="expected_price"/>
