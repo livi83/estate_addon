@@ -6,6 +6,7 @@ class EstatePropertyTag(models.Model):
     _description = "Real Estate Property Tag"
     _order = "name"  # Order by name in ascending order
     name = fields.Char(string="Tag Name", required=True)
+    color = fields.Integer(string="Color")
 
     @api.constrains('name')
     def _check_unique_name(self):
