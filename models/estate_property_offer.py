@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 from odoo.exceptions import UserError
 
 class EstatePropertyOffer(models.Model):
@@ -32,3 +32,21 @@ class EstatePropertyOffer(models.Model):
         if self.status == 'accepted':
             raise UserError("Cannot refuse an accepted offer.")
         self.status = 'refused'
+        
+    @api.model
+    def create(self, vals):
+        property_id = vals.get('property_id')
+        if property_id:
+            property_record = self.env['estate.property'].browse(property_id)
+            # Check if there are existing offers for this property
+            existing_offers = property_record.offer_ids
+            if existing_offers:
+                # Raise an error if the new offer is lower than existing offers
+                max_offer = max(existing_offers.mapped('price'))
+                if vals.get('price', 0.0) < max_offer:
+                    raise exceptions.UserError(f"The offer must be greater than the current maximum offer of {max_offer}.")
+
+            # Set the property state to 'Offer Received'
+            property_record.status = 'offer_received'
+
+        return super(EstatePropertyOffer, self).create(vals)

@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -112,4 +112,9 @@ class EstateProperty(models.Model):
             raise UserError("You need to accept an offer before selling the property.")
         self.status = 'sold'
 
-   
+    @api.model
+    def unlink(self):
+        for record in self:
+            if record.status not in ['new', 'canceled']:
+                raise exceptions.UserError("You cannot delete a property that is not in 'New' or 'Canceled' state.")
+        return super(EstateProperty, self).unlink()
