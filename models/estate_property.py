@@ -111,3 +111,5 @@ class EstateProperty(models.Model):
         if not self.offer_ids.filtered(lambda offer: offer.status == 'accepted'):
             raise UserError("You need to accept an offer before selling the property.")
         self.status = 'sold'
+
+   

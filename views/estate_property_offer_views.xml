@@ -5,25 +5,26 @@
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Property Offers" editable="bottom">
-                <field name="price"/>
-                <field name="partner_id"/>
+            <tree string="Property Offers" editable="bottom" decoration-danger="status=='refused'" decoration-success="status=='accepted'">
+                <field name="price" />
+                <field name="partner_id" />
+                 
+                <field name="status" invisible="1"/>
                 <!-- Accept Offer Button -->
-                 <button type="action" 
-                            name="%(estate.action_estate_property_offer_accept)d" 
+                <button type="action" 
+                        name="%(estate.action_estate_property_offer_accept)d" 
                             string="" 
                             class="btn-primary"
                             icon="fa-check"
-                            invisible="status"/>
-                    
+                            invisible="status not in ['waiting']"/>
+
                     <!-- Refuse Offer Button -->
                     <button type="action" 
                             name="%(estate.action_estate_property_offer_refuse)d" 
                             string="" 
                             class="btn-secondary"
                             icon="fa-times"
-                            invisible="status"/>
-                    <field name="status"/>
+                            invisible="status not in ['waiting']"/>
             </tree>
         </field>
     </record>

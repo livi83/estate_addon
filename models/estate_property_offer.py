@@ -8,9 +8,10 @@ class EstatePropertyOffer(models.Model):
     
     price = fields.Float(string='Price')
     status = fields.Selection([
+        ('waiting', 'Waiting'),
         ('accepted', 'Accepted'),
         ('refused', 'Refused'),
-    ], string='Status', default='refused')
+    ], string='Status', default='waiting')
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     property_id = fields.Many2one('estate.property', string='Property', required=True, ondelete='cascade')
 

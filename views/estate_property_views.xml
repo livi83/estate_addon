@@ -7,7 +7,6 @@
             <form string="Property Form">
                 <sheet>
                     <header>
-    
                         <!-- Mark as Sold Button -->
                         <button type="object" 
                                 name="action_sold" 
@@ -84,22 +83,22 @@
     </record>
 
     <!-- Tree View for Estate Property -->
-    <record id="view_estate_property_tree" model="ir.ui.view">
-        <field name="name">estate.property.tree</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <tree string="Property List">
-                <field name="status" string="Status"/>
-                <field name="name" string="Title"/>
-                <!-- Add color picker option to tag_ids field in tree view -->
-                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                <field name="postcode"/>
-                <field name="expected_price"/>
-                <field name="selling_price"/>
-                <field name="property_type_id" string="Property Type"/>
-            </tree>
-        </field>
-    </record>
+<record id="view_estate_property_tree" model="ir.ui.view">
+    <field name="name">estate.property.tree</field>
+    <field name="model">estate.property</field>
+    <field name="arch" type="xml">
+        <tree string="Property List" decoration-muted="status == 'sold'" decoration-bf="status == 'offer_accepted'" decoration-success="status == 'offer_received'">
+            <field name="status" string="Status"/>
+            <field name="name" string="Title"/>
+            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            <field name="postcode"/>
+            <field name="expected_price"/>
+            <field name="selling_price"/>   
+            <field name="property_type_id" string="Property Type"/>
+        </tree>
+    </field>
+</record>
+
 
     <!-- Action for Estate Property -->
     <record id="action_estate_property" model="ir.actions.act_window">
