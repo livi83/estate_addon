@@ -13,7 +13,8 @@
                             name="%(estate.action_estate_property_offer_accept)d" 
                             string="" 
                             class="btn-primary"
-                            icon="fa-check"/>
+                            icon="fa-check"
+                            invisible="status"/>
                     
                     <!-- Refuse Offer Button -->
                     <button type="action" 
@@ -21,7 +22,7 @@
                             string="" 
                             class="btn-secondary"
                             icon="fa-times"
-                            />
+                            invisible="status"/>
                     <field name="status"/>
             </tree>
         </field>
