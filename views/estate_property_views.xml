@@ -68,11 +68,11 @@
                                 <field name="bedrooms"/>
                                 <field name="facades"/>
                                 <field name="garden"/>
-                                <field name="garden_orientation"/>
+                                <field name="garden_orientation" invisible="not garden"/>
+                                <field name="garden_area" invisible="not garden"/>
                                 <field name="living_area"/>
-                                <field name="garage"/>
-                                <field name="garden_area"/>
                                 <field name="total_area" readonly="1"/>
+                                <field name="garage"/>
                                 <field name="buyer_id"/>
                                 <field name="salesperson_id"/>
                             </group>
