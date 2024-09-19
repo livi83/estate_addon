@@ -11,6 +11,9 @@
                 <field name="bedrooms" string="Bedrooms"/>
                 <field name="living_area" string="Living Area"/>
                 <field name="facades" string="Facades"/>
+
+                <!-- Add filter for Available status -->
+                <filter name="filter_available" string="Available" domain="[('status', '=', 'available')]" context="{'group_by': 'status'}" />
             </search>
         </field>
     </record>
