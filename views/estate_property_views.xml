@@ -7,13 +7,14 @@
             <form string="Property Form">
                 <sheet>
                     <header>
+    
                         <!-- Mark as Sold Button -->
                         <button type="object" 
                                 name="action_sold" 
                                 string="Sold" 
                                 class="btn-primary"
                                 icon="fa-check"
-                                invisible="context.get('status') not in ['available', 'offer_accepted']"/>
+                                invisible="status in ['sold']"/>
                     
                         <!-- Cancel Property Button -->
                         <button type="object" 
@@ -21,7 +22,7 @@
                                 string="Cancel" 
                                 class="btn-secondary"
                                 icon="fa-times"
-                                invisible="context.get('status') in ['sold', 'canceled']"/>
+                               />
                     </header>
 
                     <!-- Status Bar -->
