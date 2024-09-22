@@ -5,7 +5,7 @@
     'summary': 'An estate modul',
     'description': 'Description',
     'author': 'Lívia Kelebercová',
-    'depends': ['base'],
+    'depends': ['base','account'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',

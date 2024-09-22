@@ -31,7 +31,7 @@
 
                     <!-- Status, Title and Tags -->
                     <group>
-                        <field name="status"/>
+                        <!--<field name="status"/>-->
                         <field name="name" widget="char"/>
                         <!-- Add color picker option to tag_ids field -->
                         <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
@@ -106,7 +106,7 @@
         <field name="res_model">estate.property</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_estate_property_search"/>
-        <field name="domain">[('status', '=', 'available')]</field>
+        <field name="domain">[('status', 'in', ['available','new','offer_received','offer_accepted','sold','canceled'])]</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Click to create a new property listing.

@@ -5,8 +5,11 @@
         <field name="model_id" ref="model_estate_property"/>
         <field name="state">code</field>
         <field name="code">
-            record.action_sold()
+            for record in records:
+                _logger.debug(f"Selling property: {record.id}")
+                record.action_sold()
         </field>
+
     </record>
 
     <!-- Cancel Action -->
