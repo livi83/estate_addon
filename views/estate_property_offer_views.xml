@@ -16,7 +16,9 @@
                             string="" 
                             class="btn-primary"
                             icon="fa-check"
-                            invisible="status not in ['waiting']"/>
+                            invisible="status not in ['waiting']"
+                            title="Mark as Sold"
+                            />
 
                     <!-- Refuse Offer Button -->
                     <button type="action" 
@@ -24,7 +26,8 @@
                             string="" 
                             class="btn-secondary"
                             icon="fa-times"
-                            invisible="status not in ['waiting']"/>
+                            invisible="status not in ['waiting']"
+                            title="Mark as Canceled"/>
             </tree>
         </field>
     </record>

@@ -1,116 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Form View for Estate Property -->
-    <record id="view_estate_property_form" model="ir.ui.view">
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <form string="Property Form">
-                <sheet>
-                    <header>
-                        <!-- Mark as Sold Button -->
-                        <button type="object" 
-                                name="action_sold" 
-                                string="Sold" 
-                                class="btn-primary"
-                                icon="fa-check"
-                                invisible="status in ['sold']"/>
-                    
-                        <!-- Cancel Property Button -->
-                        <button type="object" 
-                                name="action_cancel" 
-                                string="Cancel" 
-                                class="btn-secondary"
-                                icon="fa-times"
-                               />
-                    </header>
+    <data>
+        <!-- Form View for Estate Property -->
+        <record id="view_estate_property_form" model="ir.ui.view">
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <form string="Property Form">
+                    <sheet>
+                        <header>
+                            <!-- Mark as Sold Button -->
+                            <button type="object" 
+                                    name="action_sold" 
+                                    string="Sold" 
+                                    class="btn-primary"
+                                    icon="fa-check"
+                                    invisible="status in ['sold']"/>
+                        
+                            <!-- Cancel Property Button -->
+                            <button type="object" 
+                                    name="action_cancel" 
+                                    string="Cancel" 
+                                    class="btn-secondary"
+                                    icon="fa-times"/>
+                        </header>
 
-                    <!-- Status Bar -->
-                    <header>
-                        <field name="status" widget="statusbar" statusbar_visible="draft,new,available,offer_accepted,sold,canceled"/>
-                    </header>
+                        <!-- Status Bar -->
+                        <header>
+                            <field name="status" widget="statusbar" statusbar_visible="draft,new,available,offer_accepted,sold,canceled"/>
+                        </header>
 
-                    <!-- Status, Title and Tags -->
-                    <group>
-                        <!--<field name="status"/>-->
-                        <field name="name" widget="char"/>
-                        <!-- Add color picker option to tag_ids field -->
-                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                    </group>
-
-                    <!-- Two-column layout -->
-                    <group>
+                        <!-- Status, Title and Tags -->
                         <group>
-                            <!-- Add options to prevent creation and editing of property_type_id -->
-                            <field name="property_type_id" options="{'no_create': True, 'no_open': True}"/>
-                            <field name="postcode"/>
-                            <field name="date_availability" string="Available From" invisible="1"/> <!-- Hidden by default -->
+                            <field name="name" widget="char"/>
+                            <!-- Add color picker option to tag_ids field -->
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         </group>
+
+                        <!-- Two-column layout -->
                         <group>
-                            <field name="expected_price"/>
-                            <field name="selling_price"/>
-                            <field name="best_price" readonly="1"/>
+                            <group>
+                                <field name="property_type_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="postcode"/>
+                                <field name="date_availability" string="Available From" invisible="1"/> <!-- Hidden by default -->
+                            </group>
+                            <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="best_price" readonly="1"/>
+                            </group>
                         </group>
-                    </group>
 
-                    <!-- Tabs for Description, Offers, and Other Info -->
-                    <notebook>
-                        <page string="Description">
-                            <group>
-                                <field name="description"/>
-                            </group>
-                        </page>
-                        <page string="Offers">
-                            <field name="offer_ids" context="{'default_property_id': active_id}"/>
-                        </page>
-                        <page string="Other Info">
-                            <group>
-                                <field name="bedrooms"/>
-                                <field name="facades"/>
-                                <field name="garden"/>
-                                <field name="garden_orientation" invisible="not garden"/>
-                                <field name="garden_area" invisible="not garden"/>
-                                <field name="living_area"/>
-                                <field name="total_area" readonly="1"/>
-                                <field name="garage"/>
-                                <field name="buyer_id"/>
-                                <field name="salesperson_id"/>
-                            </group>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                        <!-- Tabs for Description, Offers, and Other Info -->
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                    <field name="description"/>
+                                </group>
+                            </page>
+                            <page string="Offers">
+                                <field name="offer_ids" context="{'default_property_id': active_id}"/>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="bedrooms"/>
+                                    <field name="facades"/>
+                                    <field name="garden"/>
+                                    <field name="garden_orientation" invisible="not garden"/>
+                                    <field name="garden_area" invisible="not garden"/>
+                                    <field name="living_area"/>
+                                    <field name="total_area" readonly="1"/>
+                                    <field name="garage"/>
+                                    <field name="buyer_id"/>
+                                    <field name="salesperson_id"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Tree View for Estate Property -->
-<record id="view_estate_property_tree" model="ir.ui.view">
-    <field name="name">estate.property.tree</field>
-    <field name="model">estate.property</field>
-    <field name="arch" type="xml">
-        <tree string="Property List" decoration-muted="status == 'sold'" decoration-bf="status == 'offer_accepted'" decoration-success="status == 'offer_received'">
-            <field name="status" string="Status"/>
-            <field name="name" string="Title"/>
-            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-            <field name="postcode"/>
-            <field name="expected_price"/>
-            <field name="selling_price"/>   
-            <field name="property_type_id" string="Property Type"/>
-        </tree>
-    </field>
-</record>
+        <!-- Kanban View for Estate Property -->
+        <record id="view_estate_property_kanban" model="ir.ui.view">
+            <field name="name">estate.property.kanban</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="property_type_id">
+                    <field name="name" string="Title"/>
+                    <field name="postcode" string="Postcode"/>
+                    <field name="expected_price" string="Expected Price"/>
+                    <field name="tag_names"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_details" t-att-data-id="record.id">
+                                <!-- Property Name -->
+                                <p><strong><t t-esc="record.name.value"/></strong></p>
+                                <!-- Expected Price -->
+                                <p>Expected Price: <t t-esc="record.expected_price.value"/></p>
+                                <!-- Tags -->
+                                <p>Tags: <t t-esc="record.tag_names.value"/></p>
+                                <button type="object" 
+                                        name="open_property_form" 
+                                        class="btn btn-primary" 
+                                        icon="fa-pencil"/>
 
+                                <!--<button type="object" 
+                                        name="unlink" 
+                                        class="btn btn-danger" 
+                                        icon="fa-trash" 
+                                        title="Delete Property"
+                                        />
+                                        -->
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
-    <!-- Action for Estate Property -->
-    <record id="action_estate_property" model="ir.actions.act_window">
-        <field name="name">Estate Property</field>
-        <field name="res_model">estate.property</field>
-        <field name="view_mode">tree,form</field>
-        <field name="search_view_id" ref="view_estate_property_search"/>
-        <field name="domain">[('status', 'in', ['available','new','offer_received','offer_accepted','sold','canceled'])]</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Click to create a new property listing.
-            </p>
-        </field>
-    </record>
+        <!-- Action for Estate Property -->
+        <record id="action_estate_property_kanban" model="ir.actions.act_window">
+            <field name="name">Estate Property</field>
+            <field name="res_model">estate.property</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="search_view_id" ref="view_estate_property_search"/>
+            <field name="domain">[('status', 'in', ['available','new','offer_received','offer_accepted','sold','canceled'])]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a new property listing.
+                </p>
+            </field>
+        </record>
+    </data>
 </odoo>

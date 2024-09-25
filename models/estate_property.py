@@ -39,12 +39,15 @@ class EstateProperty(models.Model):
                                'tag_id', 
                                string='Tags'
                                )
+    tag_names = fields.Char(string="Tag Names", compute='_compute_tag_names', store=False)
+
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string='Offers')
     invoice_id = fields.Many2one('account.move', string="Invoice")
     
     total_area = fields.Float(string='Total Area', compute='_compute_total_area', store=True)
     best_price = fields.Float(string='Best Offer', compute='_compute_best_price', store=True)
-
+    best_offer_price = fields.Float(string="Best Offer Price")
+    
     status = fields.Selection([
         ('new', 'New'),
         ('available', 'Available'),
@@ -104,4 +107,21 @@ class EstateProperty(models.Model):
         for record in self:
             if record.status not in ['new', 'canceled']:
                 raise exceptions.UserError("You cannot delete a property that is not in 'New' or 'Canceled' state.")
-        return super(EstateProperty, self).unlink()
+        return super(EstateProperty, record).unlink()
+
+    @api.depends('tag_ids')
+    def _compute_tag_names(self):
+        for record in self:
+            record.tag_names = ', '.join(record.tag_ids.mapped('name'))
+    
+    
+    def open_property_form(self):
+        """ Opens the form view of the current property. """
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Estate Property',
+            'res_model': 'estate.property',
+            'res_id': self.id,  # The current record ID
+            'view_mode': 'form',
+            'target': 'current',  # Opens in the same tab
+        }

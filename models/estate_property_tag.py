@@ -17,3 +17,5 @@ class EstatePropertyTag(models.Model):
             ])
             if existing_tag:
                 raise ValidationError("The tag name must be unique.")
+    
+   

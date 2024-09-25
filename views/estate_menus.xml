@@ -22,7 +22,7 @@
               name="Properties"
               parent="menu_real_estate_advertisements"
               sequence="10"
-              action="action_estate_property"/>
+              action="action_estate_property_kanban"/>
 
     <!-- Third-Level Menu under Settings for Property Types -->
     <menuitem id="menu_real_estate_property_types"
